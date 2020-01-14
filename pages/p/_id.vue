@@ -41,12 +41,22 @@
 				rem nostrum vero.
 			</p>
 		</main>
-		<footer></footer>
+		<footer>
+			<h4>Комментарии:</h4>
+			<!-- form -->
+			<div v-if="true" class="comments">
+				<Comment v-for="comment in 4" :key="comment" :comment="comment" />
+			</div>
+			<div v-else><el-card class="g-tac">Комментариев нет</el-card></div>
+		</footer>
 	</article>
 </template>
 
 <script>
+import Comment from '@/components/main/Comment'
+
 export default {
+	components: { Comment },
 	validate({ params }) {
 		return !!params.id
 	}
@@ -62,16 +72,21 @@ export default {
 .title,
 .info {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
 
 .title {
 	margin-bottom: 1rem;
+
+	h1 {
+		order: 1;
+		margin-left: 0.5rem;
+	}
 }
 
 .info {
 	margin-bottom: 0.5rem;
+	justify-content: space-between;
 }
 
 .image img {
@@ -85,5 +100,11 @@ header {
 
 main {
 	margin-bottom: 2rem;
+}
+
+footer h4 {
+	font-weight: normal;
+	text-decoration: underline;
+	margin-bottom: 1rem;
 }
 </style>

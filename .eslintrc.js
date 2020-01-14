@@ -27,6 +27,7 @@ module.exports = {
 		'no-cond-assign': 'error',
 		'no-confusing-arrow': 'off',
 		'no-console': 'off',
-		'no-debugger': 'off'
+		'no-debugger': 'off',
+		'vue/require-prop-types': 'off'
 	}
 }

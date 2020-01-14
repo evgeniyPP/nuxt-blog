@@ -1,6 +1,6 @@
 <template>
 	<nav>
-		<h1>SSR Blog</h1>
+		<h1>Veni, vidi, vici – <span class="gray">мой блог на Nuxt.js</span></h1>
 	</nav>
 </template>
 
@@ -11,5 +11,9 @@ nav {
 	justify-content: center;
 	height: 100%;
 	border-bottom: 1px solid #e6e6e6;
+
+	.gray {
+		color: #999;
+	}
 }
 </style>
