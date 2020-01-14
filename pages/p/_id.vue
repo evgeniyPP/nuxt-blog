@@ -43,7 +43,7 @@
 		</main>
 		<footer>
 			<h4>Комментарии:</h4>
-			<!-- form -->
+			<NewComment />
 			<div v-if="true" class="comments">
 				<Comment v-for="comment in 4" :key="comment" :comment="comment" />
 			</div>
@@ -54,9 +54,10 @@
 
 <script>
 import Comment from '@/components/main/Comment'
+import NewComment from '@/components/main/NewComment'
 
 export default {
-	components: { Comment },
+	components: { Comment, NewComment },
 	validate({ params }) {
 		return !!params.id
 	}
