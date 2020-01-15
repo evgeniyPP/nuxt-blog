@@ -43,7 +43,7 @@
 		</main>
 		<footer>
 			<h4>Комментарии:</h4>
-			<NewComment />
+			<NewComment v-if="canAddComment" @created="handleCreateComment" />
 			<div v-if="true" class="comments">
 				<Comment v-for="comment in 4" :key="comment" :comment="comment" />
 			</div>
@@ -58,6 +58,16 @@ import NewComment from '@/components/main/NewComment'
 
 export default {
 	components: { Comment, NewComment },
+	data() {
+		return {
+			canAddComment: true
+		}
+	},
+	methods: {
+		handleCreateComment() {
+			this.canAddComment = false
+		}
+	},
 	validate({ params }) {
 		return !!params.id
 	}
