@@ -61,6 +61,18 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		const { message } = this.$route.query
+
+		switch (message) {
+			case 'noauth':
+				this.$message.error('У Вас нет доступа! Войдите в систему')
+				break
+			case 'logout':
+				this.$message.success('Вы успешно вышли из системы!')
+				break
+		}
+	},
 	methods: {
 		onSubmit() {
 			this.$refs.loginForm.validate(async valid => {

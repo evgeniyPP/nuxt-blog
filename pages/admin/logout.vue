@@ -1,9 +1,14 @@
 <template>
-	<h1>Logout</h1>
+	<h1>Выходим из системы... Пожалуйста, подождите</h1>
 </template>
 
 <script>
 export default {
-	layout: 'admin'
+	layout: 'admin',
+	middleware: ['admin-auth'],
+	beforeCreate() {
+		this.$store.dispatch('auth/logout')
+		this.$router.push('/admin/login?message=logout')
+	}
 }
 </script>

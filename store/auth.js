@@ -5,6 +5,9 @@ export const state = () => ({
 export const mutations = {
 	setToken(state, token) {
 		state.token = token
+	},
+	clearToken(state) {
+		state.token = null
 	}
 }
 
@@ -13,6 +16,9 @@ export const actions = {
 		const token = await new Promise(resolve => resolve('mock-token'))
 		dispatch('setToken', token)
 		console.log(data)
+	},
+	logout({ commit }) {
+		commit('clearToken')
 	},
 	setToken({ commit }, token) {
 		commit('setToken', token)
