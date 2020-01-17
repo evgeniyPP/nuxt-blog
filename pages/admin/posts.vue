@@ -21,18 +21,22 @@
 		</el-table-column>
 		<el-table-column label="Действия">
 			<template slot-scope="{ row: { _id } }">
-				<el-button
-					@click="open(_id)"
-					icon="el-icon-edit-outline"
-					type="primary"
-					circle
-				/>
-				<el-button
-					@click="remove(_id)"
-					icon="el-icon-document-delete"
-					type="danger"
-					circle
-				/>
+				<el-tooltip effect="dark" content="Открыть пост" placement="top">
+					<el-button
+						@click="open(_id)"
+						icon="el-icon-edit-outline"
+						type="primary"
+						circle
+					/>
+				</el-tooltip>
+				<el-tooltip effect="dark" content="Удалить пост" placement="top">
+					<el-button
+						@click="remove(_id)"
+						icon="el-icon-document-delete"
+						type="danger"
+						circle
+					/>
+				</el-tooltip>
 			</template>
 		</el-table-column>
 	</el-table>
@@ -49,9 +53,21 @@ export default {
 	methods: {
 		open(id) {
 			console.log('opened ', id)
+			this.$router.push(`/admin/p/${id}`)
 		},
-		remove(id) {
-			console.log('removed ', id)
+		async remove(id) {
+			try {
+				await this.$confirm('Удалить пост?', 'Внимание!', {
+					confirmButtonText: 'Удалить',
+					cancelButtonText: 'Отмена',
+					type: 'warning'
+				})
+				await this.$store.dispatch('posts/remove', id)
+				this.posts = this.posts.filter(post => post._id !== id)
+				this.$message.success('Пост удален')
+			} catch (e) {
+				console.log('Пост НЕ удален', e)
+			}
 		}
 	}
 }

@@ -18,7 +18,7 @@
 			/>
 		</el-form-item>
 		<el-form-item>
-			<el-button :loading="loading" type="primary" native-type="submit" round>
+			<el-button :loading="loading" type="primary" native-type="submit">
 				Добавить
 			</el-button>
 		</el-form-item>

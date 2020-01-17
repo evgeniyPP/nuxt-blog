@@ -16,7 +16,7 @@ module.exports = {
 	},
 
 	// Customize the progress-bar color
-	loading: { color: '#fff' },
+	loading: { color: '#409eff' },
 
 	// Global CSS
 	css: ['element-ui/lib/theme-chalk/index.css', '@/theme/index.scss'],
