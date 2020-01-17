@@ -109,8 +109,8 @@ export default {
 					try {
 						await this.$store.dispatch('post/edit', data)
 						this.$message.success('Пост успешно изменен')
-						this.loading = false
 					} catch (e) {
+					} finally {
 						this.loading = false
 					}
 				} else {

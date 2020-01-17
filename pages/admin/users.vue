@@ -76,8 +76,8 @@ export default {
 						this.$message.success('Новый пользователь добавлен')
 						this.controls.login = ''
 						this.controls.password = ''
-						this.loading = false
 					} catch (e) {
+					} finally {
 						this.loading = false
 					}
 				} else {
