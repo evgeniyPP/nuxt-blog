@@ -1,5 +1,5 @@
 export default function({ store, redirect }) {
-	if (!store.getters['auth/isAuth']) {
+	if (!store.getters['admin/isAuth']) {
 		redirect('/admin/login?message=noauth')
 	}
 }

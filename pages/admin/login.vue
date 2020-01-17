@@ -85,7 +85,7 @@ export default {
 					}
 
 					try {
-						await this.$store.dispatch('auth/login', data)
+						await this.$store.dispatch('admin/login', data)
 						this.$router.push('/admin')
 					} catch (e) {
 						this.loading = false
