@@ -107,7 +107,8 @@ export default {
 					}
 
 					try {
-						await this.$store.dispatch('post/edit', data)
+						await this.$store.dispatch('posts/edit', data)
+						this.$router.push('/admin/posts')
 						this.$message.success('Пост успешно изменен')
 					} catch (e) {
 					} finally {

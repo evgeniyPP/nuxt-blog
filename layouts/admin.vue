@@ -15,7 +15,17 @@
 import Aside from '@/components/admin/Aside'
 
 export default {
-	components: { Aside }
+	components: { Aside },
+	computed: {
+		error() {
+			return this.$store.getters.error
+		}
+	},
+	watch: {
+		error(value) {
+			this.$message.error(value.response.data.message)
+		}
+	}
 }
 </script>
 

@@ -66,6 +66,9 @@ export default {
 			case 'noauth':
 				this.$message.error('У Вас нет доступа! Войдите в систему')
 				break
+			case 'session':
+				this.$message.warning('Время сессии истекло')
+				break
 			case 'logout':
 				this.$message.success('Вы успешно вышли из системы!')
 				break

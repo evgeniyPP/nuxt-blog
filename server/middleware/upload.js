@@ -4,10 +4,10 @@ const moment = require('moment')
 
 const storage = multer.diskStorage({
 	destination(req, file, fn) {
-		fn(null, path.resolve(__dirname, '../../static'))
+		fn(null, path.resolve(__dirname, '../../static/post-images'))
 	},
 	filename(req, file, fn) {
-		fn(null, `${file.originalname}-${moment().format('DDMMYYYY-HHmmss_SSS')}`)
+		fn(null, `${moment().format('DDMMYYYY-HHmmss_SSS')}-${file.originalname}`)
 	}
 })
 const fileFilter = (req, file, fn) => {

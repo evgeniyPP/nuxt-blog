@@ -11,7 +11,12 @@ const keys = require('./keys')
 const app = express()
 
 mongoose
-	.connect(keys.MONGO_URI)
+	.connect(keys.MONGO_URI, {
+		useNewUrlParser: true,
+		useFindAndModify: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true
+	})
 	.then(() => console.log('MongoDB successfully connected...'))
 	.catch(e => console.error('MongoDB connection failed!', e))
 
