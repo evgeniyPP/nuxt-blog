@@ -14,7 +14,7 @@
 				<el-input v-model.trim="controls.password" type="password" />
 			</el-form-item>
 			<el-form-item>
-				<el-button :loading="loading" type="primary" native-type="submit" round>
+				<el-button :loading="loading" type="primary" native-type="submit">
 					Войти
 				</el-button>
 			</el-form-item>
@@ -62,9 +62,7 @@ export default {
 		}
 	},
 	mounted() {
-		const { message } = this.$route.query
-
-		switch (message) {
+		switch (this.$route.query.message) {
 			case 'noauth':
 				this.$message.error('У Вас нет доступа! Войдите в систему')
 				break
