@@ -2,50 +2,31 @@
 	<article class="post">
 		<header>
 			<div class="title">
-				<h1>Post title</h1>
+				<h1>{{ post.title }}</h1>
 				<nuxt-link to="/"><i class="el-icon-back"/></nuxt-link>
 			</div>
 			<div class="info">
 				<small>
-					<i class="el-icon-time" />{{ new Date().toLocaleString() }}
+					<i class="el-icon-time" />{{ new Date(post.date).toLocaleString() }}
 				</small>
-				<small><i class="el-icon-view" />42</small>
+				<small><i class="el-icon-view" />{{ post.views }}</small>
 			</div>
 			<div class="image">
-				<img src="https://i.picsum.photos/id/603/700/300.jpg" alt="post" />
+				<img :src="post.imageUrl" alt="main" />
 			</div>
 		</header>
 		<main>
-			<p>
-				1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-				alias nam fuga minus, pariatur temporibus, tempora autem sit quod
-				corrupti in similique facere consectetur, voluptates doloribus impedit
-				rem nostrum vero.
-			</p>
-			<p>
-				2. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-				alias nam fuga minus, pariatur temporibus, tempora autem sit quod
-				corrupti in similique facere consectetur, voluptates doloribus impedit
-				rem nostrum vero.
-			</p>
-			<p>
-				3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-				alias nam fuga minus, pariatur temporibus, tempora autem sit quod
-				corrupti in similique facere consectetur, voluptates doloribus impedit
-				rem nostrum vero.
-			</p>
-			<p>
-				4. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-				alias nam fuga minus, pariatur temporibus, tempora autem sit quod
-				corrupti in similique facere consectetur, voluptates doloribus impedit
-				rem nostrum vero.
-			</p>
+			<vue-markdown>{{ post.text }}</vue-markdown>
 		</main>
 		<footer>
 			<h4>Комментарии:</h4>
-			<NewComment v-if="canAddComment" @created="handleCreateComment" />
-			<div v-if="true" class="comments">
-				<Comment v-for="comment in 4" :key="comment" :comment="comment" />
+			<NewComment @created="handleCreateComment" :postId="post._id" />
+			<div v-if="post.comments.length" class="comments">
+				<Comment
+					v-for="comment in post.comments"
+					:key="comment._id"
+					:comment="comment"
+				/>
 			</div>
 			<div v-else><el-card class="g-tac">Комментариев нет</el-card></div>
 		</footer>
@@ -58,14 +39,16 @@ import NewComment from '@/components/main/NewComment'
 
 export default {
 	components: { Comment, NewComment },
-	data() {
+	async asyncData({ store, params }) {
+		const post = await store.dispatch('posts/fetchSingle', params.id)
+		await store.dispatch('posts/addView', post)
 		return {
-			canAddComment: true
+			post: { ...post, views: ++post.views, comments: post.comments.reverse() }
 		}
 	},
 	methods: {
-		handleCreateComment() {
-			this.canAddComment = false
+		handleCreateComment(comment) {
+			this.post.comments.unshift(comment)
 		}
 	},
 	validate({ params }) {

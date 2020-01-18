@@ -6,11 +6,11 @@
 		:rules="rules"
 	>
 		<el-form-item prop="name">
-			<el-input v-model.trim="controls.name" placeholder="Ваше имя" />
+			<el-input v-model="controls.name" placeholder="Ваше имя" />
 		</el-form-item>
 		<el-form-item prop="text">
 			<el-input
-				v-model.trim="controls.text"
+				v-model="controls.text"
 				:rows="2"
 				type="textarea"
 				resize="none"
@@ -27,6 +27,7 @@
 
 <script>
 export default {
+	props: { postId: { type: String, required: true } },
 	data() {
 		return {
 			loading: false,
@@ -66,24 +67,25 @@ export default {
 	},
 	methods: {
 		onSubmit() {
-			this.$refs.form.validate(valid => {
+			this.$refs.form.validate(async valid => {
 				if (valid) {
 					this.loading = true
 
-					// const data = {
-					// 	name: this.controls.name,
-					// 	text: this.controls.text,
-					// 	id: ''
-					// }
+					const data = {
+						name: this.controls.name,
+						text: this.controls.text,
+						postId: this.postId
+					}
 
 					try {
-						this.$emit('created')
+						const comment = await this.$store.dispatch('comment/create', data)
+						this.$emit('created', comment)
+						this.controls.name = ''
+						this.controls.text = ''
 						this.$message.success('Комментарий добавлен')
 					} catch (e) {
 						this.loading = false
 					}
-
-					console.log('Valid')
 				} else {
 					console.log('error submit!!')
 					return false

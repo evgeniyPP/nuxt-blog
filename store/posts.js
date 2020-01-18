@@ -1,6 +1,14 @@
 export const state = () => ({})
 
 export const actions = {
+	async fetch({ commit }) {
+		try {
+			return await this.$axios.$get('/api/post')
+		} catch (e) {
+			commit('setError', e, { root: true })
+			throw e
+		}
+	},
 	async fetchAdmin({ commit }) {
 		try {
 			return await this.$axios.$get('/api/post/admin')
@@ -38,9 +46,25 @@ export const actions = {
 			throw e
 		}
 	},
+	async fetchSingle({ commit }, id) {
+		try {
+			return await this.$axios.$get(`/api/post/${id}`)
+		} catch (e) {
+			commit('setError', e, { root: true })
+			throw e
+		}
+	},
 	async fetchAdminSingle({ commit }, id) {
 		try {
 			return await this.$axios.$get(`/api/post/admin/${id}`)
+		} catch (e) {
+			commit('setError', e, { root: true })
+			throw e
+		}
+	},
+	async addView({ commit }, { _id, views }) {
+		try {
+			return await this.$axios.$put(`/api/post/add/view/${_id}`, { views })
 		} catch (e) {
 			commit('setError', e, { root: true })
 			throw e

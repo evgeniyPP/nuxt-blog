@@ -1,24 +1,26 @@
 <template>
 	<el-card :body-style="{ padding: 0 }" class="post" shadow="hover">
 		<header slot="header">
-			<h3>Post title</h3>
-			<small><i class="el-icon-time" />{{ new Date().toLocaleString() }}</small>
+			<h3>{{ post.title }}</h3>
+			<small>
+				<i class="el-icon-time" />{{ new Date(post.date).toLocaleString() }}
+			</small>
 		</header>
 		<main>
-			<img src="https://i.picsum.photos/id/603/700/300.jpg" alt="post" />
+			<img :src="post.imageUrl" alt="main" />
 		</main>
 		<footer>
-			<el-button @click="openPost" round>Открыть</el-button>
-			<span><i class="el-icon-s-comment" />12</span>
+			<el-button @click="openPost(post._id)" round>Открыть</el-button>
+			<span><i class="el-icon-s-comment" />{{ post.comments.length }}</span>
 		</footer>
 	</el-card>
 </template>
 
 <script>
 export default {
+	props: { post: { type: Object, required: true } },
 	methods: {
-		openPost() {
-			const id = 'test'
+		openPost(id) {
 			this.$router.push(`/p/${id}`)
 		}
 	}
