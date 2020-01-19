@@ -6,6 +6,7 @@ const {
 	getById,
 	edit,
 	remove,
+	getAnalytics,
 	addView
 } = require('../controllers/post.controller')
 const upload = require('../middleware/upload')
@@ -34,6 +35,12 @@ router.delete(
 	'/admin/:id',
 	passport.authenticate('jwt', { session: false }),
 	remove
+)
+
+router.get(
+	'/admin/get/analytics',
+	passport.authenticate('jwt', { session: false }),
+	getAnalytics
 )
 
 // Base – /api/post
