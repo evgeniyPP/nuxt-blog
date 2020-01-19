@@ -37,12 +37,15 @@ module.exports = {
 		// Doc: https://axios.nuxtjs.org/usage
 		'@nuxtjs/axios',
 		// Doc: https://github.com/nuxt-community/dotenv-module
-		'@nuxtjs/dotenv'
+		'@nuxtjs/dotenv',
+		'@nuxtjs/pwa'
 	],
 
 	// Axios module configuration
 	// See https://axios.nuxtjs.org/options
-	axios: {},
+	axios: {
+		baseURL: process.env.BASE_URL || 'http://localhost:3000'
+	},
 
 	env: {
 		appName: 'Veni, vidi, vici – мой блог на Nuxt.js'

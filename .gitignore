@@ -90,7 +90,7 @@ sw.*
 *.swp
 
 # keys
-server/keys
+server/keys/keys.dev.js
 
 # post images
 static/*.jpeg
