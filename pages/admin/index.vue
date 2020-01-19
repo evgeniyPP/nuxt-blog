@@ -20,6 +20,9 @@ import Chart from '@/components/admin/Chart'
 export default {
 	components: { Chart },
 	layout: 'admin',
+	head: {
+		title: `Аналитика | ${process.env.appName}`
+	},
 	middleware: ['admin-auth'],
 	async asyncData({ store }) {
 		const { views, comments } = await store.dispatch('posts/getAnalytics')

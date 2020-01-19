@@ -44,6 +44,10 @@ module.exports = {
 	// See https://axios.nuxtjs.org/options
 	axios: {},
 
+	env: {
+		appName: 'Veni, vidi, vici – мой блог на Nuxt.js'
+	},
+
 	// Build configuration
 	build: {
 		transpile: [/^element-ui/],

@@ -6,9 +6,7 @@
 				<nuxt-link to="/"><i class="el-icon-back"/></nuxt-link>
 			</div>
 			<div class="info">
-				<small>
-					<i class="el-icon-time" />{{ new Date(post.date).toLocaleString() }}
-				</small>
+				<small> <i class="el-icon-time" />{{ post.date | date }} </small>
 				<small><i class="el-icon-view" />{{ post.views }}</small>
 			</div>
 			<div class="image">
@@ -39,6 +37,9 @@ import NewComment from '@/components/main/NewComment'
 
 export default {
 	components: { Comment, NewComment },
+	head() {
+		return { title: `${this.post.title} | ${process.env.appName}` }
+	},
 	async asyncData({ store, params }) {
 		const post = await store.dispatch('posts/fetchSingle', params.id)
 		await store.dispatch('posts/addView', post)

@@ -5,6 +5,9 @@
 <script>
 export default {
 	layout: 'admin',
+	head: {
+		title: `Выходим... | ${process.env.appName}`
+	},
 	middleware: ['admin-auth'],
 	beforeCreate() {
 		this.$store.dispatch('admin/logout')
