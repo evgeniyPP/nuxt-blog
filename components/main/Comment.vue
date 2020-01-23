@@ -28,9 +28,17 @@ header {
 	justify-content: space-between;
 	margin-bottom: 0.5rem;
 	font-size: 0.8rem;
+
+	.name {
+		font-weight: bold;
+	}
 }
 
 main {
 	white-space: pre-line;
+}
+
+i {
+	margin-right: 5px;
 }
 </style>

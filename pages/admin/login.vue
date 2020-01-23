@@ -14,9 +14,14 @@
 				<el-input v-model.trim="controls.password" type="password" />
 			</el-form-item>
 			<el-form-item>
-				<el-button :loading="loading" type="primary" native-type="submit">
-					Войти
-				</el-button>
+				<div class="buttons">
+					<el-button :loading="loading" type="primary" native-type="submit">
+						Войти
+					</el-button>
+					<el-button @click="handleReturn">
+						Вернуться на главную
+					</el-button>
+				</div>
 			</el-form-item>
 		</el-form>
 	</el-card>
@@ -99,6 +104,9 @@ export default {
 					return false
 				}
 			})
+		},
+		handleReturn() {
+			this.$router.push('/')
 		}
 	}
 }
@@ -115,5 +123,10 @@ button {
 
 .el-form-item:last-child {
 	margin-bottom: 0;
+
+	.buttons {
+		display: flex;
+		justify-content: space-between;
+	}
 }
 </style>

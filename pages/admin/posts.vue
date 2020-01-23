@@ -55,7 +55,6 @@ export default {
 	},
 	methods: {
 		open(id) {
-			console.log('opened ', id)
 			this.$router.push(`/admin/p/${id}`)
 		},
 		async remove(id) {
@@ -75,3 +74,10 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.el-table {
+	min-width: 625px;
+	overflow-x: auto;
+}
+</style>

@@ -2,14 +2,20 @@ module.exports = {
 	mode: 'universal',
 	// Headers of the page
 	head: {
-		title: process.env.npm_package_name || '',
+		title: 'Veni, vidi, vici – мой блог на Nuxt.js',
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{
 				hid: 'description',
 				name: 'description',
-				content: process.env.npm_package_description || ''
+				content:
+					'Блог Евгений Петрянкина, написанный при изучении Nuxt.js с использованием технологии Server-Side Rendering'
+			},
+			{
+				hid: 'keywords',
+				name: 'keywords',
+				content: 'js, javascript, vue, ssr, nuxt, nuxtjs, blog'
 			}
 		],
 		link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
@@ -36,8 +42,6 @@ module.exports = {
 	modules: [
 		// Doc: https://axios.nuxtjs.org/usage
 		'@nuxtjs/axios',
-		// Doc: https://github.com/nuxt-community/dotenv-module
-		'@nuxtjs/dotenv',
 		'@nuxtjs/pwa'
 	],
 

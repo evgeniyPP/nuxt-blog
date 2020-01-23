@@ -3,7 +3,6 @@
 		<header>
 			<div class="title">
 				<h1>{{ post.title }}</h1>
-				<nuxt-link to="/"><i class="el-icon-back"/></nuxt-link>
 			</div>
 			<div class="info">
 				<small> <i class="el-icon-time" />{{ post.date | date }} </small>
@@ -64,22 +63,20 @@ export default {
 	margin: 0 auto;
 }
 
-.title,
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.title h1 {
+	display: inline-block;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+
 .info {
 	display: flex;
 	align-items: center;
-}
-
-.title {
-	margin-bottom: 1rem;
-
-	h1 {
-		order: 1;
-		margin-left: 0.5rem;
-	}
-}
-
-.info {
 	margin-bottom: 0.5rem;
 	justify-content: space-between;
 }
@@ -101,5 +98,9 @@ footer h4 {
 	font-weight: normal;
 	text-decoration: underline;
 	margin-bottom: 1rem;
+}
+
+i {
+	margin-right: 5px;
 }
 </style>

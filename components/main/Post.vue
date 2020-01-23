@@ -1,11 +1,13 @@
 <template>
 	<el-card :body-style="{ padding: 0 }" class="post" shadow="hover">
 		<header slot="header">
-			<h3>{{ post.title }}</h3>
-			<small> <i class="el-icon-time" />{{ post.date | date('date') }} </small>
+			<h3 @click="openPost(post._id)">{{ post.title }}</h3>
+			<small class="date">
+				<i class="el-icon-time" />{{ post.date | date('date') }}
+			</small>
 		</header>
 		<main>
-			<img :src="post.imageUrl" alt="main" />
+			<img :src="post.imageUrl" @click="openPost(post._id)" alt="main" />
 		</main>
 		<footer>
 			<el-button @click="openPost(post._id)" round>Открыть</el-button>
@@ -48,5 +50,20 @@ footer {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+h3,
+img {
+	cursor: pointer;
+}
+
+i {
+	margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+	.date {
+		display: none;
+	}
 }
 </style>

@@ -27,7 +27,19 @@ body {
 	opacity: 0;
 }
 
-button {
-	font-size: 0.85rem !important;
-	text-transform: uppercase;
+.el-button {
+	font-size: 0.85rem;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 910px) {
+	.el-aside {
+		width: auto !important;
+	}
+
+	.el-menu-item {
+		span {
+			display: none;
+		}
+	}
 }

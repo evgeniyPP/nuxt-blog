@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="chart">
 		<canvas ref="canvas" height="80vh"></canvas>
 	</div>
 </template>
@@ -72,3 +72,9 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+.chart {
+	min-width: 600px;
+}
+</style>

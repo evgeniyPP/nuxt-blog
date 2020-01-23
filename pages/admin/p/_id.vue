@@ -11,11 +11,11 @@
 			:rules="rules"
 		>
 			<el-form-item label="Заголовок поста" prop="title">
-				<el-input v-model.trim="controls.title" />
+				<el-input v-model="controls.title" />
 			</el-form-item>
 			<el-form-item label="Текст в формате .md или .html" prop="text">
 				<el-input
-					v-model.trim="controls.text"
+					v-model="controls.text"
 					:rows="10"
 					type="textarea"
 					resize="none"

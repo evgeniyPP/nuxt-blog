@@ -91,8 +91,3 @@ sw.*
 
 # keys
 server/keys/keys.dev.js
-
-# post images
-static/*.jpeg
-static/*.jpg
-static/*.png

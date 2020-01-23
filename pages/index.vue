@@ -10,7 +10,14 @@
 import Post from '@/components/main/Post'
 export default {
 	head: {
-		title: `Главная | ${process.env.appName}`
+		title: `Главная | ${process.env.appName}`,
+		meta: [
+			{
+				hid: 'homepage',
+				name: 'description',
+				content: 'Главная страница моего блога на Nuxt.js'
+			}
+		]
 	},
 	components: { Post },
 	async asyncData({ store }) {
